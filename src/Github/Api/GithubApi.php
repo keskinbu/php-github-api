@@ -33,14 +33,21 @@ class GithubApi
 
     private function makeRequest(string $endpoint)
     {
+        $headers = [
+            'Accept' => 'application/vnd.github.v3+json'
+        ];
+
+        if ($this->apiToken->getApiToken()) {
+            $headers = [
+                'Authorization' => 'Bearer ' . $this->apiToken->getApiToken()
+            ];
+        }
+
         return $this->httpClient->request(
             'GET',
             Client::GITHUB_URI . $endpoint,
             [
-                'headers' => [
-                    'Accept' => 'application/vnd.github.v3+json',
-                    'Authorization' => 'Bearer ' . $this->apiToken->getApiToken()
-                ],
+                'headers' => $headers,
             ]
         );
     }

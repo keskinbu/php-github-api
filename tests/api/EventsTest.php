@@ -3,18 +3,12 @@
 use PHPUnit\Framework\TestCase;
 use Github\Client;
 use Github\ApiToken;
-use Dotenv\Dotenv;
 
 class EventsTest extends TestCase
 {
     public function test()
     {
-        $dotenv = new Dotenv(__DIR__ . '/../..');
-        $dotenv->load();
-
-        $githubAccessToken = getenv('GITHUB_ACCESS_TOKEN');
-
-        $token  = new ApiToken($githubAccessToken);
+        $token  = new ApiToken();
         $client = new Client($token);
 
         $response = $client->getEvents('keskinbu');
