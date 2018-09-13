@@ -1,15 +1,15 @@
 <?php
-declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Github\Client;
 use Github\ApiToken;
+use Dotenv\Dotenv;
 
 class EventsTest extends TestCase
 {
     public function test()
     {
-        $dotenv = new Dotenv\Dotenv(__DIR__ . '/../..');
+        $dotenv = new Dotenv(__DIR__ . '/../..');
         $dotenv->load();
 
         $githubAccessToken = getenv('GITHUB_ACCESS_TOKEN');
