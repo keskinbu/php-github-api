@@ -1,0 +1,34 @@
+{
+    "name": "keskinbu/php-github-api",
+    "type": "library",
+    "description": "GitHub API v3 client",
+    "homepage": "https://github.com/keskinbu/php-github-api",
+    "keywords": ["github", "gh", "api", "gist"],
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Burak Keskin",
+            "email": "burak@burakkeskin.com.tr",
+            "homepage": "http://github.com/keskinbu"
+        }
+    ],
+    "require": {
+        "php": "^5.6 || ^7.0",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": { "Github\\": "src/Github/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Github\\Tests\\": "test/Github/Tests/"}
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "master"
+        }
+    }
+}
