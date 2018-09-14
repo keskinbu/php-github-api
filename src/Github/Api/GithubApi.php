@@ -5,11 +5,12 @@ namespace Github\Api;
 use GuzzleHttp\Client as GuzzleHttpClient;
 use Github\ApiToken;
 use Github\Client;
+use Github\Api\AbstractApi;
 
 /**
  *
  */
-class GithubApi
+class GithubApi extends AbstractApi
 {
     /**
      * GuzzleHttp Client

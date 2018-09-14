@@ -18,10 +18,11 @@
         "vlucas/phpdotenv": "^2.5"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7"
+        "phpunit/phpunit": "^7",
+        "codeception/codeception": "^2.4"
     },
     "autoload": {
-        "psr-4": { "Github\\": "src/Github/" }
+        "psr-4": { "": "src/" }
     },
     "autoload-dev": {
         "psr-4": { "Github\\Tests\\": "test/Github/Tests/"}
