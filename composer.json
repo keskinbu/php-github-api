@@ -22,10 +22,10 @@
         "codeception/codeception": "^2.4"
     },
     "autoload": {
-        "psr-4": { "": "src/" }
+        "psr-4": { "Github\\": "src/Github/" }
     },
     "autoload-dev": {
-        "psr-4": { "Github\\Tests\\": "test/Github/Tests/"}
+        "psr-4": { "Github\\Tests\\": "tests/"}
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

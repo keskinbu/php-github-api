@@ -2,16 +2,27 @@
 
 namespace Github;
 
-use Github\Api\GithubApi;
-use Github\ApiToken;
+use Github\Traits\ClientTrait;
+use Github\Traits\MethodsTrait;
+use GuzzleHttp\Client as GuzzleHttpClient;
 
 /**
  *
  */
 class Client
 {
+    use ClientTrait;
+    use MethodsTrait;
+
     /** Base API URI */
     public const GITHUB_URI = 'https://api.github.com/';
+
+    /**
+     * Guzzle Http Client
+     *
+     * @var GuzzleHttpClient
+     */
+    private $guzzleHttpClient;
 
     /**
      * Store the options
@@ -21,19 +32,55 @@ class Client
     private $options = [];
 
     /**
-     * Github api
+     * Api token class
      *
-     * @var GithubApi
+     * @var ApiToken
      */
-    private $api;
+    private $apiToken;
 
     public function __construct(ApiToken $apiToken, array $options = [])
     {
-        $this->api = new GithubApi($apiToken);
+        $this->guzzleHttpClient = new GuzzleHttpClient();
+        $this->apiToken = $apiToken;
     }
 
-    public function getEvents(string $username)
+    public function makeRequest(string $endpoint)
     {
-        return $this->api->getEvents($username);
+        $headers = [
+            'Accept' => 'application/vnd.github.v3+json'
+        ];
+
+        if ($this->getApiToken()->getToken()) {
+            $headers = array_merge($headers, [
+                'Authorization' => 'Bearer ' . $this->getApiToken()->getToken()
+            ]);
+        }
+
+        return $this->guzzleHttpClient->request(
+            'GET',
+            Client::GITHUB_URI . $endpoint,
+            [
+                'headers' => $headers,
+            ]
+        );
+    }
+
+    /**
+     * @return \Github\ApiToken
+     */
+    public function getApiToken(): \Github\ApiToken
+    {
+        return $this->apiToken;
+    }
+
+    /**
+     * @param \Github\ApiToken $apiToken
+     *
+     * @return $this
+     */
+    public function setApiToken(\Github\ApiToken $apiToken)
+    {
+        $this->apiToken = $apiToken;
+        return $this;
     }
 }

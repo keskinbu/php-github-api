@@ -1,19 +1,16 @@
 <?php
 
-namespace Github\Api;
+namespace Github\Api\Base;
 
 use Github\Client;
 use Github\Traits\ClientTrait;
 
-/**
- *
- */
-class GithubApi extends AbstractApi
+class AbstractMethods
 {
     use ClientTrait;
 
     public function __construct(Client $client)
     {
-        $this->client = $client;
+        $this->setClient($client);
     }
 }

@@ -10,4 +10,6 @@ $githubAccessToken = getenv('GITHUB_ACCESS_TOKEN');
 $token  = new ApiToken($githubAccessToken);
 $client = new Client($token);
 
-print_r($client->getEvents('keskinbu'));
+$response = $client->user()->events('keskinbu');
+
+print_r($response);

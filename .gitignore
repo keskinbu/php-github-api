@@ -2,3 +2,4 @@
 /.env
 tests/_data/*
 tests/_log/*
+/.idea

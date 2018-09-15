@@ -6,7 +6,7 @@ use Github\Exception\RuntimeException;
 
 class ApiToken
 {
-    private $apiToken = null;
+    private $token = null;
 
     /**
      * Token Bag
@@ -15,7 +15,7 @@ class ApiToken
      */
     public function __construct($_apiToken = null)
     {
-        $this->apiToken = $_apiToken;
+        $this->token = $_apiToken;
     }
 
     /**
@@ -23,9 +23,9 @@ class ApiToken
      *
      * @return string
      */
-    public function getApiToken()
+    public function getToken()
     {
-        return $this->apiToken;
+        return $this->token;
     }
 
     /**
@@ -35,13 +35,13 @@ class ApiToken
      *
      * @return self
      */
-    public function setApiToken($apiToken)
+    public function setToken($apiToken)
     {
         if (!is_string($apiToken)) {
-            throw new RuntimeException('The Apitoken must be set.');
+            throw new RuntimeException('The API token must be set.');
         }
 
-        $this->apiToken = $apiToken;
+        $this->token = $apiToken;
 
         return $this;
     }

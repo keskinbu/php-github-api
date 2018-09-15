@@ -2,6 +2,8 @@
 
 namespace Github\Traits;
 
+use Github\Client;
+
 trait ClientTrait
 {
     /**
@@ -24,7 +26,7 @@ trait ClientTrait
     /**
      * Set the value of The client
      *
-     * @param Client client
+     * @param Client $client
      *
      * @return self
      */
